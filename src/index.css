@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Comic Sans MS', sans-serif; /* Default fallback font */
+  background-size: cover;
+  background-position: center;
+}
+
+.mochiy-pop-one-regular {
+  font-family: 'Mochiy Pop One', sans-serif;
+}
+
+/* Responsive design for mobile-first */
+.container {
+  padding: 16px;
+}
+
+/* Adjustments for larger screens */
+@media (min-width: 768px) {
+  .container {
+    padding: 32px;
+  }
+}
