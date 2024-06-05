@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>Jyllands Park Zoo App</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap"
@@ -14,6 +17,46 @@
   </head>
   <body>
     <div id="root"></div>
+    <div id="modal-root"></div>
+    <!-- Added for modal -->
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      // Prevent double-tap to zoom
+      document.addEventListener(
+        "touchstart",
+        function (event) {
+          if (event.touches.length > 1) {
+            event.preventDefault();
+          }
+        },
+        { passive: false }
+      );
+
+      // Prevent pinch-to-zoom
+      document.addEventListener("gesturestart", function (event) {
+        event.preventDefault();
+      });
+
+      // Additional event listeners to ensure no zooming occurs
+      document.addEventListener(
+        "touchmove",
+        function (event) {
+          if (event.scale !== 1) {
+            event.preventDefault();
+          }
+        },
+        { passive: false }
+      );
+
+      // Prevent zooming via keyboard (Ctrl + +/-)
+      document.addEventListener("keydown", function (event) {
+        if (
+          (event.ctrlKey || event.metaKey) &&
+          (event.key === "+" || event.key === "-" || event.key === "0")
+        ) {
+          event.preventDefault();
+        }
+      });
+    </script>
   </body>
 </html>
